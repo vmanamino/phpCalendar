@@ -92,7 +92,8 @@ echo "<br/>In ".$month." ".$current_year." it falls on the following day:<br/>";
 			# days less than or equal to total days of month and within current weekday loop, follow conditions to put out proper date data
 			if ($day <= $days) {
 				if ($first_row) { # special instructions to deal with first week of month
-					if ($start <= $column) { # when start value set above matches column value, i.e. the weekday when month begins, and in turn becomes less than column--enter date
+          /* when start value set above matches column value, i.e. the weekday when month begins, or in turn becomes less than column, enter date */
+					if ($start <= $column) { 
 						if ($day == $birth_day) { # indicate birthday, when day number matches birthday.
 							echo "<td><b>b-day</b></td>";
 							$day += 1; # each marking of month date, increment day by one
@@ -113,7 +114,7 @@ echo "<br/>In ".$month." ".$current_year." it falls on the following day:<br/>";
 						$day += 1;
 					}
 				}								
-			} else { # last day of month, but still within weekday loop, put out asterix as indication
+			} else { # after last day of month, that is > days, but still within weekday loop, i.e. < 7, put out asterix as indication
 				echo "<td>*</td>";
 			}
 		} #exit weekday column loop	
